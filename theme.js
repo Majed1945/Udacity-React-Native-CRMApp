@@ -1,0 +1,15 @@
+const theme = {
+  colors: {
+    textPrimary: "#2D0C57",
+    textSecondary: "#9586A8",
+    border: "#D9D0E3",
+    backGround: "#F6F5F5",
+    backGroundViolet: "#E2CBFF",
+    mediumViolet: "#A259FF",
+    violet: "#7203FF",
+    green: "#0BCE83",
+    lightGreen: "#CBF265",
+  },
+};
+
+export default theme;

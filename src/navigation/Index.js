@@ -12,7 +12,11 @@ const Index = () => {
   return (
     <NavigationContainer initialRouteNam="Welcome">
       <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen
+          name="Welcome"
+          component={Welcome}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="ShowCustomer" component={ShowCustomer} />
         <Stack.Screen name="RegionsList" component={RegionsList} />
         <Stack.Screen name="NewCustomer" component={NewCustomer} />
