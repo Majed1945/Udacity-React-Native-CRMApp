@@ -1,10 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
+import CustomerCard from "../../features/customer/components/customersByRegion/customerCard/Index";
 
-const CustomersByRegion = () => {
+const CustomersByRegion = ({ route }) => {
+  const { region } = route.params;
   return (
-    <View>
-      <Text>CustomersByRegion</Text>
+    <View style={{ flex: 1, marginHorizontal: 20, marginVertical: 10 }}>
+      <CustomerCard firstName={"Majed"} lastName={"Biazid"} active={true} />
     </View>
   );
 };

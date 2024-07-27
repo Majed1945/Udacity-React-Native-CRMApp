@@ -31,6 +31,12 @@ const Index = () => {
         <Stack.Screen
           name="Customers By Region"
           component={CustomersByRegion}
+          options={({ route }) => {
+            const region = route.params?.region;
+            return {
+              title: region ? `Customers in ${region}` : "Customers By Region",
+            };
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
