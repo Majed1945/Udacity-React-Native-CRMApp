@@ -4,9 +4,10 @@ import CustomButton from "../../components/Button/Index";
 import splashImage from "../../../assets/images/splashImage.png";
 import Icon from "react-native-vector-icons/Ionicons";
 import welcomeStyles from "./styles";
-
+import { useNavigation } from "@react-navigation/native";
 const Welcome = () => {
   const styles = welcomeStyles();
+  const { navigate } = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -27,7 +28,11 @@ const Welcome = () => {
           device storage.
         </Text>
         <View style={styles.bottomSectionButtonsBox}>
-          <CustomButton text={"START"} isFilled={true} />
+          <CustomButton
+            text={"START"}
+            isFilled={true}
+            onPress={() => navigate("Regions List")}
+          />
           <CustomButton text={"CLEAR"} isFilled={false} />
         </View>
       </View>

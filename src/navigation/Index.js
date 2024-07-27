@@ -11,17 +11,27 @@ const Stack = createNativeStackNavigator();
 const Index = () => {
   return (
     <NavigationContainer initialRouteNam="Welcome">
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#F6F5F5",
+          },
+          headerTintColor: "#2D0C57",
+        }}
+      >
         <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="ShowCustomer" component={ShowCustomer} />
-        <Stack.Screen name="RegionsList" component={RegionsList} />
-        <Stack.Screen name="NewCustomer" component={NewCustomer} />
-        <Stack.Screen name="EditCustomer" component={EditCustomer} />
-        <Stack.Screen name="CustomersByRegion" component={CustomersByRegion} />
+        <Stack.Screen name="Show Customer" component={ShowCustomer} />
+        <Stack.Screen name="Regions List" component={RegionsList} />
+        <Stack.Screen name="New Customer" component={NewCustomer} />
+        <Stack.Screen name="Edit Customer" component={EditCustomer} />
+        <Stack.Screen
+          name="Customers By Region"
+          component={CustomersByRegion}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

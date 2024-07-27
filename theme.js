@@ -7,6 +7,7 @@ const theme = {
     backGroundViolet: "#E2CBFF",
     mediumViolet: "#A259FF",
     violet: "#7203FF",
+    darkViolet: "#6a11cb",
     green: "#0BCE83",
     lightGreen: "#CBF265",
   },
