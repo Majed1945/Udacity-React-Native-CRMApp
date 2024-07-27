@@ -4,25 +4,16 @@
     "slug": "udacity-react-native-course-project",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true
     },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
+    "android": {},
+    "web": {},
     "plugins": [
       [
         "expo-font",
@@ -31,7 +22,19 @@
             "./assets/fonts/PTSerif-Bold.ttf",
             "./assets/fonts/PTSerif-BoldItalic.ttf",
             "./assets/fonts/PTSerif-Italic.ttf",
-            "./assets/fonts/PTSerif-Regular.ttf"
+            "./assets/fonts/PTSerif-Regular.ttf",
+            "./assets/fonts/Roboto-Black.ttf",
+            "./assets/fonts/Roboto-BlackItalic.ttf",
+            "./assets/fonts/Roboto-Bold.ttf",
+            "./assets/fonts/Roboto-BoldItalic.ttf",
+            "./assets/fonts/Roboto-Italic.ttf",
+            "./assets/fonts/Roboto-Light.ttf",
+            "./assets/fonts/Roboto-LightItalic.ttf",
+            "./assets/fonts/Roboto-Medium.ttf",
+            "./assets/fonts/Roboto-MediumItalic.ttf",
+            "./assets/fonts/Roboto-Regular.ttf",
+            "./assets/fonts/Roboto-Thin.ttf",
+            "./assets/fonts/Roboto-ThinItalic.ttf"
           ]
         }
       ]
