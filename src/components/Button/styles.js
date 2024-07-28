@@ -4,12 +4,12 @@ import theme from "../../../theme";
 const buttonStyles = (isFilled = false) => {
   return {
     buttonContainer: {
-      backgroundColor: isFilled ? theme.colors.green : theme.colors.backGround,
+      backgroundColor: isFilled ? theme.colors.violet : theme.colors.backGround,
       borderRadius: 8,
       width: "100%",
       justifyContent: "center",
       alignItems: "center",
-      height: 60,
+      height: 50,
     },
     buttonText: {
       fontFamily: "Roboto-Medium",

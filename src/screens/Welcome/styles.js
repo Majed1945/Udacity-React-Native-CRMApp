@@ -12,7 +12,7 @@ const welcomeStyles = () => {
       borderWidth: 1,
       borderTopRightRadius: 30,
       borderTopLeftRadius: 30,
-      backgroundColor: "#F6F5F5",
+      backgroundColor: theme.colors.backGround,
       alignItems: "center",
       padding: 20,
       paddingTop: 60,
