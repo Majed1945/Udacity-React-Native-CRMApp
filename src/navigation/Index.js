@@ -1,3 +1,4 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Welcome from "../screens/Welcome/Index";
@@ -6,11 +7,12 @@ import RegionsList from "../screens/RegionsList/Index";
 import NewCustomer from "../screens/NewCustomer/Index";
 import EditCustomer from "../screens/EditCustomer/Index";
 import CustomersByRegion from "../screens/CustomersByRegion/Index";
-
+import CustomHeader from "./customHeader/Index";
 const Stack = createNativeStackNavigator();
+
 const Index = () => {
   return (
-    <NavigationContainer initialRouteNam="Welcome">
+    <NavigationContainer initialRouteName="Welcome">
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
@@ -26,8 +28,30 @@ const Index = () => {
         />
         <Stack.Screen name="Show Customer" component={ShowCustomer} />
         <Stack.Screen name="Regions List" component={RegionsList} />
-        <Stack.Screen name="New Customer" component={NewCustomer} />
-        <Stack.Screen name="Edit Customer" component={EditCustomer} />
+        <Stack.Screen
+          name="New Customer"
+          component={NewCustomer}
+          options={{
+            header: () => (
+              <CustomHeader
+                title="New Customer"
+                description="Fill in the details below to add a new customer."
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="Edit Customer"
+          component={EditCustomer}
+          options={{
+            header: () => (
+              <CustomHeader
+                title="Edit a Customer"
+                description="Edit the details of the selected customer."
+              />
+            ),
+          }}
+        />
         <Stack.Screen
           name="Customers By Region"
           component={CustomersByRegion}
