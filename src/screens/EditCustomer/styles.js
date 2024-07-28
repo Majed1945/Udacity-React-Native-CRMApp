@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import theme from "../../../theme";
 
-const newCustomerStyles = () => {
+const editCustomerStyles = () => {
   return {
     container: {
       flex: 1,
@@ -18,4 +18,4 @@ const newCustomerStyles = () => {
   };
 };
 
-export default StyleSheet.create(newCustomerStyles);
+export default StyleSheet.create(editCustomerStyles);

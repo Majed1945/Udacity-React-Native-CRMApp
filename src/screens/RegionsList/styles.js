@@ -6,8 +6,8 @@ const regionsListStyles = () => {
     container: {
       flex: 1,
       backgroundColor: theme.colors.backGround,
-      marginHorizontal: 20,
-      marginVertical: 10,
+      paddingHorizontal: 20,
+      paddingVertical: 10,
       gap: 12,
     },
     listOfRegionsText: {
