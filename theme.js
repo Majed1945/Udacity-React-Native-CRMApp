@@ -10,7 +10,6 @@ const theme = {
     darkViolet: "#6a11cb",
     green: "#0BCE83",
     lightGreen: "#CBF265",
-    green: "#00ff99",
     red: "#ff471a",
     lightViolet: "#e6ccff",
     grey: "#B0B0B0",

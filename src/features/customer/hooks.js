@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "./reducers";
 import { useEffect } from "react";
 import { PENDING } from "../../utilities/helpers";
+import Toast from "react-native-toast-message";
 
+export const useShowToast = (type = "success", text1 = "", text2 = "") => {
+  Toast.show({ type, text1, text2 });
+};
 export const useUpdateFormFields = (customerID = null) => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.customer.edit.status);
@@ -21,6 +25,7 @@ export const useUpdateFormFields = (customerID = null) => {
     },
   };
 };
+
 export const useNewCustomer = () => {
   const dispatch = useDispatch();
   return {
@@ -29,6 +34,7 @@ export const useNewCustomer = () => {
     },
   };
 };
+
 export const useEditCustomer = (customerID) => {
   const dispatch = useDispatch();
   return {
@@ -37,12 +43,15 @@ export const useEditCustomer = (customerID) => {
     },
   };
 };
+
 export const useCreateCustomerStatus = () => {
   return useSelector((state) => state.customer.create.status);
 };
+
 export const useEditCustomerStatus = () => {
   return useSelector((state) => state.customer.edit.status);
 };
+
 export const useListCustomers = () => {
   return useSelector((state) => state.customer.list.customers);
 };

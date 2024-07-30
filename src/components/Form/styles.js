@@ -16,7 +16,7 @@ const formStyles = () => {
     buttonsBox: {
       flex: 1,
       justifyContent: "flex-end",
-      paddingBottom: 20,
+      paddingBottom: 40,
     },
   };
 };

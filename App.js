@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import initializeStore from "./src/store/index";
 import * as SplashScreen from "expo-splash-screen";
 import { Provider } from "react-redux";
+import Toast from "react-native-toast-message";
+import { toastConfig } from "./toastConfig";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,6 +44,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <Navigation />
+      <Toast
+        config={toastConfig}
+        topOffset={40}
+        position="top"
+        visibilityTime={1000}
+      />
     </Provider>
   );
 };

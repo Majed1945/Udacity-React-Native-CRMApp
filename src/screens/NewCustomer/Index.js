@@ -10,13 +10,11 @@ const NewCustomer = () => {
   const createCustomerStatus = useCreateCustomerStatus();
 
   return (
-    <View style={{ flex: 1 }}>
-      <CustomerForm
-        handleSubmit={onSubmit}
-        stateStatus={createCustomerStatus}
-        customerID={null}
-      />
-    </View>
+    <CustomerForm
+      handleSubmit={onSubmit}
+      stateStatus={createCustomerStatus}
+      customerID={null}
+    />
   );
 };
 

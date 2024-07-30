@@ -11,13 +11,11 @@ const EditCustomer = ({ route }) => {
   const { onSubmit } = useEditCustomer(customerID);
   const editCustomerStatus = useEditCustomerStatus();
   return (
-    <View style={{ flex: 1 }}>
-      <CustomerForm
-        handleSubmit={onSubmit}
-        stateStatus={editCustomerStatus}
-        customerID={customerID}
-      />
-    </View>
+    <CustomerForm
+      handleSubmit={onSubmit}
+      stateStatus={editCustomerStatus}
+      customerID={customerID}
+    />
   );
 };
 

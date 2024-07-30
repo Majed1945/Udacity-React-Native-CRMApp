@@ -1,5 +1,6 @@
 import { all, put, select, takeLatest, delay } from "redux-saga/effects";
 import * as actions from "../reducers";
+import { useShowToast } from "../hooks";
 
 export function* watchEditCustomer() {
   yield takeLatest(actions.editCustomer.toString(), takeEditCustomer);
@@ -22,7 +23,12 @@ export function* takeEditCustomer(action) {
     yield delay(1000);
 
     yield put(actions.editCustomerResult(result));
+    useShowToast((type = "success"), (text1 = "User successfully edited!"));
   } catch (error) {
     yield put(actions.editCustomerError(error.toString()));
+    useShowToast(
+      (type = "error"),
+      (text1 = "An error ocurred while updating the user, please try again")
+    );
   }
 }

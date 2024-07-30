@@ -1,13 +1,16 @@
 import { View, KeyboardAvoidingView, Platform } from "react-native";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import formStyles from "./styles";
 import CustomizedTextInput from "../TextInput/Index";
 import CustomizedRadioGroup from "../RadioButtonGroup/Index";
 import CustomizedSelector from "../Selector/Index";
 import CustomButton from "../Button/Index";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { INPROGRESS, REQUESTING } from "../../utilities/helpers";
-import { useUpdateFormFields } from "../../features/customer/hooks";
+import { INPROGRESS, REQUESTING, SUCCESS } from "../../utilities/helpers";
+import {
+  useUpdateFormFields,
+  useShowToast,
+} from "../../features/customer/hooks";
 
 const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
   const styles = formStyles();
@@ -30,6 +33,7 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
     ],
     []
   );
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -72,11 +76,6 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
           isFilled={true}
           onPress={handleSubmit}
           disabled={[INPROGRESS, REQUESTING].includes(stateStatus)}
-        />
-        <CustomButton
-          text={"Cancel"}
-          isFilled={false}
-          onPress={() => navigate("Regions List")}
         />
       </View>
     </KeyboardAvoidingView>
