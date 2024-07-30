@@ -1,9 +1,14 @@
 import "./gesture-handler";
-import Index from "./src/navigation/Index";
+import Navigation from "./src/navigation/Index";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
+import initializeStore from "./src/store/index";
 import * as SplashScreen from "expo-splash-screen";
+import { Provider } from "react-redux";
+
 SplashScreen.preventAutoHideAsync();
+
+const store = initializeStore();
 
 const App = () => {
   const [loaded, error] = useFonts({
@@ -34,7 +39,11 @@ const App = () => {
     return null;
   }
 
-  return <Index />;
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  );
 };
 
 export default App;

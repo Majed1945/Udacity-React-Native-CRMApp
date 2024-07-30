@@ -1,22 +1,24 @@
 import { StyleSheet } from "react-native";
 import theme from "../../../theme";
 
-const editCustomerStyles = () => {
+const formStyles = () => {
   return {
     container: {
       flex: 1,
       backgroundColor: theme.colors.backGround,
       paddingHorizontal: 20,
-      paddingTop: 40,
-      gap: 20,
+    },
+    formBox: {
+      flex: 2,
+      paddingTop: 18,
+      gap: 18,
     },
     buttonsBox: {
       flex: 1,
-      gap: 10,
       justifyContent: "flex-end",
-      paddingBottom: 10,
+      paddingBottom: 20,
     },
   };
 };
 
-export default StyleSheet.create(editCustomerStyles);
+export default StyleSheet.create(formStyles);

@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Fontisto";
 import MIcon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
 
-const index = ({ firstName, lastName, active }) => {
+const index = ({ firstName, lastName, active, id }) => {
   const { navigate } = useNavigation();
   const styles = customerCardStyles(active);
   return (
@@ -22,7 +22,7 @@ const index = ({ firstName, lastName, active }) => {
           name="edit"
           size={25}
           color={"#2D0C57"}
-          onPress={() => navigate("Edit Customer")}
+          onPress={() => navigate("Edit Customer", { customerID: id })}
         />
       </View>
     </View>

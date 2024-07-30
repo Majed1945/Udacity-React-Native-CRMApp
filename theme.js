@@ -13,7 +13,7 @@ const theme = {
     green: "#00ff99",
     red: "#ff471a",
     lightViolet: "#e6ccff",
-    grey: "#e0e0eb",
+    grey: "#B0B0B0",
   },
 };
 
