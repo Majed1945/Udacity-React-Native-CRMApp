@@ -4,7 +4,6 @@ const radioGroupStyles = (isFilled = false) => {
   return {
     container: {
       gap: 5,
-      backgroundColor: theme.colors.backGround,
     },
     input: {
       height: 50,
@@ -15,6 +14,7 @@ const radioGroupStyles = (isFilled = false) => {
     titleText: {
       fontFamily: "Roboto-Regular",
       fontSize: 16,
+      color: theme.secondary.main,
     },
     radioGroup: {
       flexDirection: "row",

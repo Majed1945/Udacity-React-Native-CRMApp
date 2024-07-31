@@ -5,14 +5,13 @@ const welcomeStyles = () => {
   return {
     container: {
       flex: 1,
-      backgroundColor: theme.colors.mediumViolet,
+      backgroundColor: theme.primary.main,
     },
     bottomSection: {
       flex: 2,
       borderWidth: 1,
       borderTopRightRadius: 30,
       borderTopLeftRadius: 30,
-      backgroundColor: theme.colors.backGround,
       alignItems: "center",
       padding: 20,
       paddingTop: 60,
@@ -29,12 +28,12 @@ const welcomeStyles = () => {
     bottomSectionTitle: {
       fontFamily: "Roboto-Medium",
       fontSize: 37,
-      color: theme.colors.textPrimary,
+      color: theme.secondary.main,
     },
     bottomSectionText: {
       fontFamily: "Roboto-Regular",
       fontSize: 17,
-      color: theme.colors.textSecondary,
+      color: theme.secondary.main,
       textAlign: "center",
     },
     bottomSectionButtonsBox: {

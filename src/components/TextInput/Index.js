@@ -1,6 +1,7 @@
 import { View, Text, TextInput } from "react-native";
 import React from "react";
 import textInputStyles from "./styles";
+import theme from "../../../theme";
 const Index = ({ value, onChangeText, placeholder, title }) => {
   const styles = textInputStyles();
   return (

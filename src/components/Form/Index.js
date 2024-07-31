@@ -11,6 +11,7 @@ import {
   useUpdateFormFields,
   useShowToast,
 } from "../../features/customer/hooks";
+import theme from "../../../theme";
 
 const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
   const styles = formStyles();
@@ -24,11 +25,15 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
         id: "Active",
         label: "Active",
         value: "Active",
+        color: theme.primary.main,
+        borderColor: theme.gray.g200,
       },
       {
         id: "InActive",
         label: "InActive",
         value: "InActive",
+        color: theme.primary.main,
+        borderColor: theme.gray.g200,
       },
     ],
     []

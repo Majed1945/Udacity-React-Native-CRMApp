@@ -5,8 +5,8 @@ const formStyles = () => {
   return {
     container: {
       flex: 1,
-      backgroundColor: theme.colors.backGround,
-      paddingHorizontal: 20,
+      paddingHorizontal: 15,
+      backgroundColor: "white",
     },
     formBox: {
       flex: 2,
@@ -16,7 +16,7 @@ const formStyles = () => {
     buttonsBox: {
       flex: 1,
       justifyContent: "flex-end",
-      paddingBottom: 40,
+      paddingBottom: 30,
     },
   };
 };

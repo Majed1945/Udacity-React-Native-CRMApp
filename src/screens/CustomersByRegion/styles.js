@@ -5,10 +5,10 @@ const customerByRegionStyles = () => {
   return {
     container: {
       flex: 1,
-      backgroundColor: theme.colors.backGround,
-      paddingHorizontal: 20,
-      paddingVertical: 10,
+      paddingHorizontal: 10,
+      paddingVertical: 20,
       gap: 10,
+      backgroundColor: "white",
     },
     noCustomersBox: {
       flex: 1,
@@ -17,8 +17,9 @@ const customerByRegionStyles = () => {
       gap: 10,
     },
     noCustomersText: {
-      fontFamily: "Roboto-Medium",
+      fontFamily: "Roboto-Regular",
       fontSize: 16,
+      color: theme.secondary.main,
     },
   };
 };

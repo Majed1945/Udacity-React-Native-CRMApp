@@ -27,7 +27,18 @@ const Index = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Show Customer" component={ShowCustomer} />
-        <Stack.Screen name="Regions List" component={RegionsList} />
+        <Stack.Screen
+          name="Regions List"
+          component={RegionsList}
+          options={{
+            header: () => (
+              <CustomHeader
+                title="Regions List"
+                description="Please select the customer region from the compass."
+              />
+            ),
+          }}
+        />
         <Stack.Screen
           name="New Customer"
           component={NewCustomer}
@@ -55,11 +66,19 @@ const Index = () => {
         <Stack.Screen
           name="Customers By Region"
           component={CustomersByRegion}
-          options={({ route }) => {
-            const region = route.params?.region;
-            return {
-              title: region ? `Customers in ${region}` : "Customers By Region",
-            };
+          options={{
+            header: ({ route }) => {
+              const region = route.params?.region;
+
+              return (
+                <CustomHeader
+                  title={
+                    region ? `Customers in ${region}` : "Customers By Region"
+                  }
+                  description={`Below is the list of all customers in ${region} region`}
+                />
+              );
+            },
           }}
         />
       </Stack.Navigator>

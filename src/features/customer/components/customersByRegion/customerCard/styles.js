@@ -4,11 +4,14 @@ import theme from "../../../../../../theme";
 const customerCardStyles = (active = false) => {
   return {
     container: {
-      backgroundColor: theme.colors.lightViolet,
+      backgroundColor: theme.primary.p300,
       borderRadius: 12,
       flexDirection: "row",
       padding: 10,
       gap: 10,
+      marginBottom: 10,
+      borderLeftWidth: 3,
+      borderColor: theme.primary.p200,
     },
     textContainer: {
       justifyContent: "space-between",
@@ -23,17 +26,19 @@ const customerCardStyles = (active = false) => {
       alignItems: "center",
     },
     nameText: {
-      fontFamily: "Roboto-Medium",
+      fontFamily: "Roboto-Italic",
       fontSize: 15,
+      color: theme.secondary.main,
     },
     statusText: {
       fontFamily: "Roboto-Regular",
       fontSize: 13,
-      color: theme.colors.textPrimary,
+      color: theme.secondary.main,
     },
     editContainer: {
-      justifyContent: "center",
+      flexDirection: "row",
       alignItems: "center",
+      gap: 10,
     },
   };
 };

@@ -4,11 +4,11 @@ import theme from "../../../theme";
 const headerStyles = () => {
   return {
     container: {
-      backgroundColor: theme.colors.backGround,
+      backgroundColor: "#fff",
     },
     headerContainer: {
       height: 200,
-      backgroundColor: theme.colors.lightViolet,
+      backgroundColor: theme.primary.p400,
       borderBottomLeftRadius: 20,
       borderBottomRightRadius: 20,
       justifyContent: "center",
@@ -19,20 +19,20 @@ const headerStyles = () => {
     titleText: {
       fontSize: 20,
       fontWeight: "bold",
-      color: "#2D0C57",
+      color: theme.secondary.main,
     },
     descriptionText: {
       fontSize: 14,
-      color: "#2D0C57",
+      color: theme.secondary.main,
     },
     backButtonContainer: {
       position: "absolute",
       left: 15,
-      top: 30,
+      top: 40,
       width: 40,
       height: 40,
       borderRadius: 20,
-      backgroundColor: theme.colors.violet,
+      backgroundColor: theme.primary.main,
       justifyContent: "center",
       alignItems: "center",
     },

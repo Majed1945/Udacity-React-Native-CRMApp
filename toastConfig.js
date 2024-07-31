@@ -9,7 +9,7 @@ export const toastConfig = {
     <BaseToast
       {...props}
       style={{
-        borderLeftColor: theme.colors.green,
+        borderLeftColor: theme.success.main,
       }}
       text1Style={{
         fontSize: 15,
@@ -24,7 +24,7 @@ export const toastConfig = {
   error: (props) => (
     <ErrorToast
       {...props}
-      style={{ borderLeftColor: theme.colors.red }}
+      style={{ borderLeftColor: theme.error.main }}
       text1Style={{
         fontSize: 15,
         fontWeight: "500",

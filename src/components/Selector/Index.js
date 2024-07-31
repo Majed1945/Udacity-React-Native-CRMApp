@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import RNPickerSelect from "react-native-picker-select";
 import selectorStyles from "./styles";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/AntDesign";
 
 const Index = ({ title, selectedValue, onChange }) => {
   const styles = selectorStyles();
@@ -30,7 +30,7 @@ const Index = ({ title, selectedValue, onChange }) => {
         }}
         useNativeAndroidPickerStyle={false}
         Icon={() => {
-          return <Icon name="chevron-down" style={styles.icon} />;
+          return <Icon name="down" style={styles.icon} />;
         }}
       />
     </View>
