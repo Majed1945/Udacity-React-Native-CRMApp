@@ -99,6 +99,10 @@ const reducers = {
     state.delete.status = ERROR;
     state.error.message = payload;
   },
+  loadCustomers: (state) => {},
+  loadResult: (state, { payload }) => {
+    state.list.customers = payload;
+  },
 };
 
 const slice = createSlice({
@@ -120,6 +124,8 @@ export const {
   deleteCustomer,
   deleteCustomerResult,
   deleteCustomerError,
+  loadCustomers,
+  loadResult,
 } = slice.actions;
 
 export default slice.reducer;

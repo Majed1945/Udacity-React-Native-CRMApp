@@ -1,7 +1,7 @@
 import { all, put, select, takeLatest, delay } from "redux-saga/effects";
 import * as actions from "../reducers";
 import { useShowToast } from "../hooks";
-
+import { set } from "../../../utilities/asyncStorage";
 export function* watchCreateCustomer() {
   yield takeLatest(actions.createCustomer.toString(), takeCreateCustomer);
 }
@@ -17,8 +17,10 @@ export function* takeCreateCustomer() {
     };
 
     // pretend call to API
-    yield delay(1000);
     const result = [customer, ...customers];
+    yield set("Customers", JSON.stringify(result));
+
+    yield delay(1000);
     yield put(actions.createCustomerResult(result));
     useShowToast(
       (type = "customSuccess"),

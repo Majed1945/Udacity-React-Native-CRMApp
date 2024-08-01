@@ -1,6 +1,7 @@
 import { all, put, select, takeLatest, delay } from "redux-saga/effects";
 import * as actions from "../reducers";
 import { useShowToast } from "../hooks";
+import { set } from "../../../utilities/asyncStorage";
 
 export function* watchDeleteCustomer() {
   yield takeLatest(actions.deleteCustomer.toString(), takeDeleteCustomer);
@@ -10,10 +11,11 @@ export function* takeDeleteCustomer(action) {
   const customerID = action.payload;
   try {
     const customers = yield select((state) => state.customer.list.customers);
-    const result = customers.filter((customer) => customer.id !== customerID);
     // pretend call to API
-    yield delay(1000);
+    const result = customers.filter((customer) => customer.id !== customerID);
+    yield set("Customers", JSON.stringify(result));
 
+    yield delay(1000);
     yield put(actions.deleteCustomerResult(result));
     useShowToast(
       (type = "customSuccess"),

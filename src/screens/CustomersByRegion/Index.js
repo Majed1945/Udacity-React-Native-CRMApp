@@ -14,7 +14,7 @@ const CustomersByRegion = ({ route }) => {
   const { navigate } = useNavigation();
   return (
     <View style={styles.container}>
-      {customers.filter((customer) => customer.region === region).length ===
+      {customers?.filter((customer) => customer.region === region).length ===
       0 ? (
         <>
           <LottieView

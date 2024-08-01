@@ -5,6 +5,7 @@ import splashImage from "../../../assets/images/splashImage.png";
 import Icon from "react-native-vector-icons/Ionicons";
 import welcomeStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { clear } from "../../utilities/asyncStorage";
 const Welcome = () => {
   const styles = welcomeStyles();
   const { navigate } = useNavigation();
@@ -33,7 +34,11 @@ const Welcome = () => {
             isFilled={true}
             onPress={() => navigate("Regions List")}
           />
-          <CustomButton text={"CLEAR"} isFilled={false} />
+          <CustomButton
+            text={"CLEAR"}
+            isFilled={false}
+            onPress={() => clear()}
+          />
         </View>
       </View>
     </View>

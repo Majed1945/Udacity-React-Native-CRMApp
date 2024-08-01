@@ -1,6 +1,7 @@
 import { all, put, select, takeLatest, delay } from "redux-saga/effects";
 import * as actions from "../reducers";
 import { useShowToast } from "../hooks";
+import { set } from "../../../utilities/asyncStorage";
 
 export function* watchEditCustomer() {
   yield takeLatest(actions.editCustomer.toString(), takeEditCustomer);
@@ -19,6 +20,8 @@ export function* takeEditCustomer(action) {
       // return the new fields instead of the old ones
       return { ...customer, ...fields };
     });
+    yield set("Customers", JSON.stringify(result));
+
     // pretend call to API
     yield delay(1000);
 
