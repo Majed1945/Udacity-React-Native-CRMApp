@@ -1,4 +1,4 @@
-import { View, KeyboardAvoidingView, Platform } from "react-native";
+import { View, KeyboardAvoidingView, Platform, Text } from "react-native";
 import React, { useEffect, useMemo } from "react";
 import formStyles from "./styles";
 import CustomizedTextInput from "../TextInput/Index";
@@ -6,7 +6,12 @@ import CustomizedRadioGroup from "../RadioButtonGroup/Index";
 import CustomizedSelector from "../Selector/Index";
 import CustomButton from "../Button/Index";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { INPROGRESS, REQUESTING, SUCCESS } from "../../utilities/helpers";
+import {
+  INPROGRESS,
+  IsEmpty,
+  REQUESTING,
+  SUCCESS,
+} from "../../utilities/helpers";
 import {
   useUpdateFormFields,
   useShowToast,
@@ -74,6 +79,11 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID, disabled }) => {
           onChange={(value) => setFormField("region", value)}
           disabled={disabled}
         />
+        {(IsEmpty(firstName) || IsEmpty(lastName)) && (
+          <Text style={styles.validationText}>
+            Please note that the form cannot be submitted if any filed is empty
+          </Text>
+        )}
       </View>
       <View style={styles.buttonsBox}>
         <CustomButton
@@ -88,7 +98,11 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID, disabled }) => {
           }
           isFilled={true}
           onPress={handleSubmit}
-          disabled={[INPROGRESS, REQUESTING].includes(stateStatus)}
+          disabled={
+            [INPROGRESS, REQUESTING].includes(stateStatus) ||
+            IsEmpty(firstName) ||
+            IsEmpty(lastName)
+          }
         />
       </View>
     </KeyboardAvoidingView>

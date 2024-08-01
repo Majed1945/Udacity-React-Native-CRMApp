@@ -18,6 +18,11 @@ const formStyles = () => {
       justifyContent: "flex-end",
       paddingBottom: 30,
     },
+    validationText: {
+      fontFamily: "Roboto-Regular",
+      fontSize: 16,
+      color: theme.secondary.main,
+    },
   };
 };
 
