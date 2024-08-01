@@ -1,10 +1,37 @@
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 import theme from "./theme";
+import { StyleSheet, Text, View } from "react-native";
+import SuccessIcon from "react-native-vector-icons/AntDesign";
+import ErrorIcon from "react-native-vector-icons/MaterialIcons";
+
+// Styles
+const getStyles = (theme, type) => {
+  const isSuccess = type === "success";
+  return StyleSheet.create({
+    container: {
+      width: "90%",
+      backgroundColor: isSuccess ? theme.success.light : theme.error.light,
+      padding: 15,
+      borderRadius: 10,
+      flexDirection: "row",
+      gap: 5,
+      alignItems: "center",
+      borderLeftColor: isSuccess ? theme.success.main : theme.error.main,
+      borderLeftWidth: 5,
+    },
+    text1: {
+      fontSize: 15,
+      fontWeight: "500",
+      color: isSuccess ? theme.success.main : theme.error.main,
+    },
+    text2: {
+      fontSize: 13,
+      color: isSuccess ? theme.success.dark : theme.error.dark,
+    },
+  });
+};
+
 export const toastConfig = {
-  /*
-    Overwrite 'success' type,
-    by modifying the existing `BaseToast` component
-  */
   success: (props) => (
     <BaseToast
       {...props}
@@ -17,10 +44,6 @@ export const toastConfig = {
       }}
     />
   ),
-  /*
-    Overwrite 'error' type,
-    by modifying the existing `ErrorToast` component
-  */
   error: (props) => (
     <ErrorToast
       {...props}
@@ -31,17 +54,24 @@ export const toastConfig = {
       }}
     />
   ),
-  /*
-    Or create a completely new type - `tomatoToast`,
-    building the layout from scratch.
-
-    I can consume any custom `props` I want.
-    They will be passed when calling the `show` method (see below)
-  */
-  tomatoToast: ({ text1, props }) => (
-    <View style={{ height: 60, width: "100%", backgroundColor: "tomato" }}>
-      <Text>{text1}</Text>
-      <Text>{props.uuid}</Text>
-    </View>
-  ),
+  customSuccess: ({ props, text1, text2 }) => {
+    const styles = getStyles(theme, "success");
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text1}>{text1}</Text>
+        {text2 ? <Text style={styles.text2}>{text2}</Text> : null}
+        <SuccessIcon name="checkcircleo" size={15} color={theme.success.main} />
+      </View>
+    );
+  },
+  customError: ({ props, text1, text2 }) => {
+    const styles = getStyles(theme, "error");
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text1}>{text1}</Text>
+        {text2 ? <Text style={styles.text2}>{text2}</Text> : null}
+        <ErrorIcon name="error-outline" size={15} color={theme.error.main} />
+      </View>
+    );
+  },
 };

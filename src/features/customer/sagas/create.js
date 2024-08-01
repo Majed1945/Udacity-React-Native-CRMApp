@@ -20,11 +20,14 @@ export function* takeCreateCustomer() {
     yield delay(1000);
     const result = [customer, ...customers];
     yield put(actions.createCustomerResult(result));
-    useShowToast((type = "success"), (text1 = "User successfully created!"));
+    useShowToast(
+      (type = "customSuccess"),
+      (text1 = "User successfully created!")
+    );
   } catch (error) {
     yield put(actions.createCustomerError(error.toString()));
     useShowToast(
-      (type = "error"),
+      (type = "customError"),
       (text1 = "An error ocurred while creating the user, please try again")
     );
   }

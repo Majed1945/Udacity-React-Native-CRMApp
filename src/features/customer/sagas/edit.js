@@ -23,11 +23,14 @@ export function* takeEditCustomer(action) {
     yield delay(1000);
 
     yield put(actions.editCustomerResult(result));
-    useShowToast((type = "success"), (text1 = "User successfully edited!"));
+    useShowToast(
+      (type = "customSuccess"),
+      (text1 = "User successfully edited!")
+    );
   } catch (error) {
     yield put(actions.editCustomerError(error.toString()));
     useShowToast(
-      (type = "error"),
+      (type = "customError"),
       (text1 = "An error ocurred while updating the user, please try again")
     );
   }

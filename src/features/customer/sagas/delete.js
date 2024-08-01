@@ -15,11 +15,14 @@ export function* takeDeleteCustomer(action) {
     yield delay(1000);
 
     yield put(actions.deleteCustomerResult(result));
-    useShowToast((type = "success"), (text1 = "User successfully deleted!"));
+    useShowToast(
+      (type = "customSuccess"),
+      (text1 = "User successfully deleted!")
+    );
   } catch (error) {
     yield put(actions.editCustomerError(error.toString()));
     useShowToast(
-      (type = "error"),
+      (type = "customError"),
       (text1 = "An error ocurred while deleting the user, please try again")
     );
   }
