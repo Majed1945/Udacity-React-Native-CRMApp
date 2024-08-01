@@ -20,6 +20,9 @@ const initialState = {
   edit: {
     status: PENDING,
   },
+  delete: {
+    status: PENDING,
+  },
   form: {
     fields: {
       firstName: null,
@@ -85,6 +88,17 @@ const reducers = {
   editCustomerStatus: (state, { payload }) => {
     state.edit = payload;
   },
+  deleteCustomer: (state, { payload }) => {
+    state.delete.status = REQUESTING;
+  },
+  deleteCustomerResult: (state, { payload }) => {
+    state.delete.status = SUCCESS;
+    state.list.customers = payload;
+  },
+  deleteCustomerError: (state, { payload }) => {
+    state.delete.status = ERROR;
+    state.error.message = payload;
+  },
 };
 
 const slice = createSlice({
@@ -103,6 +117,9 @@ export const {
   editCustomerError,
   editCustomerStatus,
   setFormField,
+  deleteCustomer,
+  deleteCustomerResult,
+  deleteCustomerError,
 } = slice.actions;
 
 export default slice.reducer;

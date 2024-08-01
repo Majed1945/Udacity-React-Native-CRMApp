@@ -7,6 +7,7 @@ import Toast from "react-native-toast-message";
 export const useShowToast = (type = "success", text1 = "", text2 = "") => {
   Toast.show({ type, text1, text2 });
 };
+
 export const useUpdateFormFields = (customerID = null) => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.customer.edit.status);
@@ -54,4 +55,13 @@ export const useEditCustomerStatus = () => {
 
 export const useListCustomers = () => {
   return useSelector((state) => state.customer.list.customers);
+};
+export const useDeleteCustomer = (customerID) => {
+  const dispatch = useDispatch();
+  console.warn("the id", customerID);
+  return {
+    onSubmit: () => {
+      dispatch(actions.deleteCustomer(customerID));
+    },
+  };
 };

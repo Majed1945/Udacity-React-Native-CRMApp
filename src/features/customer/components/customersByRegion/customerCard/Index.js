@@ -1,14 +1,36 @@
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import React from "react";
 import customerCardStyles from "./styles";
 import Icon from "react-native-vector-icons/Fontisto";
 import MIcon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
 import theme from "../../../../../../theme";
+import { useDeleteCustomer } from "../../../hooks";
 
-const index = ({ firstName, lastName, active, id }) => {
+const CustomerCard = ({ firstName, lastName, active, id }) => {
   const { navigate } = useNavigation();
   const styles = customerCardStyles(active);
+  const { onSubmit } = useDeleteCustomer(id);
+
+  const handleDelete = () => {
+    Alert.alert(
+      "Delete Confirmation",
+      "Are you sure you want to delete this customer?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          onPress: onSubmit,
+          style: "destructive",
+        },
+      ],
+      { cancelable: true }
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
@@ -23,7 +45,7 @@ const index = ({ firstName, lastName, active, id }) => {
           name="delete"
           size={20}
           color={theme.primary.main}
-          onPress={() => navigate("Edit Customer", { customerID: id })}
+          onPress={handleDelete}
         />
         <MIcon
           name="remove-red-eye"
@@ -42,4 +64,4 @@ const index = ({ firstName, lastName, active, id }) => {
   );
 };
 
-export default index;
+export default CustomerCard;
