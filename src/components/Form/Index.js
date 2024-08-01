@@ -13,7 +13,7 @@ import {
 } from "../../features/customer/hooks";
 import theme from "../../../theme";
 
-const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
+const CustomerForm = ({ stateStatus, handleSubmit, customerID, disabled }) => {
   const styles = formStyles();
   const { navigate } = useNavigation();
   const { fields, setFormField } = useUpdateFormFields(customerID);
@@ -27,6 +27,7 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
         value: "Active",
         color: theme.primary.main,
         borderColor: theme.gray.g200,
+        disabled: disabled,
       },
       {
         id: "InActive",
@@ -34,6 +35,7 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
         value: "InActive",
         color: theme.primary.main,
         borderColor: theme.gray.g200,
+        disabled: disabled,
       },
     ],
     []
@@ -50,23 +52,27 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
           onChangeText={(value) => setFormField("firstName", value)}
           placeholder={"Enter your first name"}
           title={"First Name"}
+          disabled={disabled}
         />
         <CustomizedTextInput
           value={lastName}
           onChangeText={(value) => setFormField("lastName", value)}
           placeholder={"Enter your last name"}
           title={"Last Name"}
+          disabled={disabled}
         />
         <CustomizedRadioGroup
           radioButtons={radioButtons}
           selectedId={status}
           setSelectedId={(value) => setFormField("status", value)}
           title={"Status"}
+          disabled={disabled}
         />
         <CustomizedSelector
           title={"Region"}
           selectedValue={region}
           onChange={(value) => setFormField("region", value)}
+          disabled={disabled}
         />
       </View>
       <View style={styles.buttonsBox}>
@@ -76,6 +82,8 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID }) => {
               ? "Loading..."
               : route.name === "Edit Customer"
               ? "Edit"
+              : route.name === "Show Customer"
+              ? "Back"
               : "Create"
           }
           isFilled={true}

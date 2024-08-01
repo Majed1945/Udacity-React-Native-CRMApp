@@ -26,7 +26,18 @@ const Index = () => {
           component={Welcome}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Show Customer" component={ShowCustomer} />
+        <Stack.Screen
+          name="Show Customer"
+          component={ShowCustomer}
+          options={{
+            header: () => (
+              <CustomHeader
+                title="Customer Profile"
+                description="Details of the selected customer's profile (View Only)"
+              />
+            ),
+          }}
+        />
         <Stack.Screen
           name="Regions List"
           component={RegionsList}

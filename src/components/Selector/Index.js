@@ -4,13 +4,14 @@ import RNPickerSelect from "react-native-picker-select";
 import selectorStyles from "./styles";
 import Icon from "react-native-vector-icons/AntDesign";
 
-const Index = ({ title, selectedValue, onChange }) => {
+const Index = ({ title, selectedValue, onChange, disabled }) => {
   const styles = selectorStyles();
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{title}</Text>
       <RNPickerSelect
         onValueChange={onChange}
+        disabled={disabled}
         items={[
           { label: "North", value: "North" },
           { label: "South", value: "South" },

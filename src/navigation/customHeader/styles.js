@@ -13,7 +13,7 @@ const headerStyles = () => {
       borderBottomRightRadius: 20,
       justifyContent: "center",
       paddingHorizontal: 15,
-      paddingBottom: 40,
+      paddingBottom: 30,
       width: "100%",
     },
     titleText: {

@@ -51,7 +51,7 @@ const CustomerCard = ({ firstName, lastName, active, id }) => {
           name="remove-red-eye"
           size={20}
           color={theme.primary.main}
-          onPress={() => navigate("Edit Customer", { customerID: id })}
+          onPress={() => navigate("Show Customer", { customerID: id })}
         />
         <MIcon
           name="edit"

@@ -14,6 +14,7 @@ const NewCustomer = () => {
       handleSubmit={onSubmit}
       stateStatus={createCustomerStatus}
       customerID={null}
+      disabled={false}
     />
   );
 };

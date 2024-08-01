@@ -15,6 +15,7 @@ const EditCustomer = ({ route }) => {
       handleSubmit={onSubmit}
       stateStatus={editCustomerStatus}
       customerID={customerID}
+      disabled={false}
     />
   );
 };
