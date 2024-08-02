@@ -7,11 +7,10 @@ import { useNavigation } from "@react-navigation/native";
 import theme from "../../../../../../theme";
 import { useDeleteCustomer } from "../../../hooks";
 
-const CustomerCard = ({ firstName, lastName, active, id }) => {
+const CustomerCard = ({ firstName, lastName, status, id }) => {
   const { navigate } = useNavigation();
-  const styles = customerCardStyles(active);
+  const styles = customerCardStyles();
   const { onSubmit } = useDeleteCustomer(id);
-
   const handleDelete = () => {
     Alert.alert(
       "Delete Confirmation",
@@ -38,7 +37,9 @@ const CustomerCard = ({ firstName, lastName, active, id }) => {
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.nameText}>{firstName + " " + lastName}</Text>
-        <Text style={styles.statusText}>{active ? "Active" : "In Active"}</Text>
+        <Text style={styles.statusText}>
+          {status === "Active" ? "Active" : "InActive"}
+        </Text>
       </View>
       <View style={styles.editContainer}>
         <MIcon

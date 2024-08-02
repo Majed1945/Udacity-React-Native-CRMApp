@@ -1,26 +1,17 @@
 import { View, KeyboardAvoidingView, Platform, Text } from "react-native";
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import formStyles from "./styles";
 import CustomizedTextInput from "../TextInput/Index";
 import CustomizedRadioGroup from "../RadioButtonGroup/Index";
 import CustomizedSelector from "../Selector/Index";
 import CustomButton from "../Button/Index";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import {
-  INPROGRESS,
-  IsEmpty,
-  REQUESTING,
-  SUCCESS,
-} from "../../utilities/helpers";
-import {
-  useUpdateFormFields,
-  useShowToast,
-} from "../../features/customer/hooks";
+import { INPROGRESS, IsEmpty, REQUESTING } from "../../utilities/helpers";
+import { useUpdateFormFields } from "../../features/customer/hooks";
 import theme from "../../../theme";
 
 const CustomerForm = ({ stateStatus, handleSubmit, customerID, disabled }) => {
   const styles = formStyles();
-  const { navigate } = useNavigation();
   const { fields, setFormField } = useUpdateFormFields(customerID);
   const { firstName, lastName, status, region } = fields;
   const route = useRoute();
@@ -81,7 +72,7 @@ const CustomerForm = ({ stateStatus, handleSubmit, customerID, disabled }) => {
         />
         {(IsEmpty(firstName) || IsEmpty(lastName)) && (
           <Text style={styles.validationText}>
-            Please note that the form cannot be submitted if any filed is empty
+            Please note that the form cannot be submitted if any filed is empty.
           </Text>
         )}
       </View>

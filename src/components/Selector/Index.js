@@ -6,6 +6,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 
 const Index = ({ title, selectedValue, onChange, disabled }) => {
   const styles = selectorStyles();
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{title}</Text>

@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, FlatList } from "react-native";
 import React from "react";
 import CustomerCard from "../../features/customer/components/customersByRegion/customerCard/Index";
 import { useListCustomers } from "../../features/customer/hooks";
@@ -12,6 +12,7 @@ const CustomersByRegion = ({ route }) => {
   const { region } = route.params;
   const customers = useListCustomers();
   const { navigate } = useNavigation();
+
   return (
     <View style={styles.container}>
       {customers?.filter((customer) => customer.region === region).length ===
@@ -37,7 +38,7 @@ const CustomersByRegion = ({ route }) => {
               <CustomerCard
                 firstName={item.firstName}
                 lastName={item.lastName}
-                active={item.status}
+                status={item.status}
                 id={item.id}
               />
             )

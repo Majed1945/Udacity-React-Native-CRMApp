@@ -19,9 +19,9 @@ const store = initializeStore();
 // Set up the notification handler to define how notifications should be handled when received
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldShowAlert: true, // Show an alert for the notification
-    shouldPlaySound: false, // Do not play a sound
-    shouldSetBadge: false, // Do not set a badge
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
   }),
 });
 
@@ -46,13 +46,11 @@ const App = () => {
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
         // Handle notification received
-        console.warn("Notification received:", notification);
       });
 
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener((notification) => {
         // Handle notification response
-        console.warn("Notification response received:", notification);
       });
 
     // Schedule a notification to be sent 10 seconds after the app starts

@@ -70,7 +70,6 @@ export const useListCustomers = () => {
 //SECTION - Delete
 export const useDeleteCustomer = (customerID) => {
   const dispatch = useDispatch();
-  console.warn("the id", customerID);
   return {
     onSubmit: () => {
       dispatch(actions.deleteCustomer(customerID));

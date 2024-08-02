@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import theme from "../../../../../../theme";
 
-const customerCardStyles = (active = false) => {
+const customerCardStyles = () => {
   return {
     container: {
       backgroundColor: theme.primary.p300,

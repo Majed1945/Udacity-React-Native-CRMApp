@@ -24,7 +24,7 @@ const RegionsList = () => {
     let direction = "";
 
     // Check if click is near the center
-    if (distanceFromCenter < radius * 0.1) {
+    if (distanceFromCenter < radius * 0.2) {
       direction = "Central";
     } else {
       const angle = Math.atan2(y, x) * (180 / Math.PI);

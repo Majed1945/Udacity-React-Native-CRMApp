@@ -1,4 +1,4 @@
-import { all, put, select, takeLatest, delay } from "redux-saga/effects";
+import { put, select, takeLatest, delay } from "redux-saga/effects";
 import * as actions from "../reducers";
 import { useShowToast } from "../hooks";
 import { set } from "../../../utilities/asyncStorage";
@@ -21,17 +21,16 @@ export function* takeEditCustomer(action) {
       return { ...customer, ...fields };
     });
     yield set("Customers", JSON.stringify(result));
-
-    // pretend call to API
     yield delay(1000);
-
     yield put(actions.editCustomerResult(result));
+
     useShowToast(
       (type = "customSuccess"),
       (text1 = "User successfully edited!")
     );
   } catch (error) {
     yield put(actions.editCustomerError(error.toString()));
+
     useShowToast(
       (type = "customError"),
       (text1 = "An error ocurred while updating the user, please try again")
