@@ -1,42 +1,79 @@
 import "./gesture-handler";
 import Navigation from "./src/navigation/Index";
-import { useEffect } from "react";
-import { useFonts } from "expo-font";
+import { useEffect, useRef } from "react";
 import initializeStore from "./src/store/index";
 import * as SplashScreen from "expo-splash-screen";
 import { Provider } from "react-redux";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "./toastConfig";
+import * as Notifications from "expo-notifications";
+import { useCustomFonts } from "./src/features/customer/hooks";
+import { registerForPushNotificationsAsync } from "./src/features/customer/services";
 
+// Prevent the splash screen from hiding automatically
 SplashScreen.preventAutoHideAsync();
 
+// Initialize the Redux store
 const store = initializeStore();
 
+// Set up the notification handler to define how notifications should be handled when received
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true, // Show an alert for the notification
+    shouldPlaySound: false, // Do not play a sound
+    shouldSetBadge: false, // Do not set a badge
+  }),
+});
+
 const App = () => {
-  const [loaded, error] = useFonts({
-    "PTSerif-Bold": require("./assets/fonts/PTSerif-Bold.ttf"),
-    "PTSerif-BoldItalic": require("./assets/fonts/PTSerif-BoldItalic.ttf"),
-    "PTSerif-Italic": require("./assets/fonts/PTSerif-Italic.ttf"),
-    "PTSerif-Regular": require("./assets/fonts/PTSerif-Regular.ttf"),
-    "Roboto-Black": require("./assets/fonts/Roboto-Black.ttf"),
-    "Roboto-BlackItalic": require("./assets/fonts/Roboto-BlackItalic.ttf"),
-    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
-    "Roboto-BoldItalic": require("./assets/fonts/Roboto-BoldItalic.ttf"),
-    "Roboto-Italic": require("./assets/fonts/Roboto-Italic.ttf"),
-    "Roboto-Light": require("./assets/fonts/Roboto-Light.ttf"),
-    "Roboto-LightItalic": require("./assets/fonts/Roboto-LightItalic.ttf"),
-    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
-    "Roboto-MediumItalic": require("./assets/fonts/Roboto-MediumItalic.ttf"),
-    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
-    "Roboto-Thin": require("./assets/fonts/Roboto-Thin.ttf"),
-    "Roboto-ThinItalic": require("./assets/fonts/Roboto-ThinItalic.ttf"),
-  });
+  // Use the custom hook to load fonts
+  const [loaded, error] = useCustomFonts();
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
   useEffect(() => {
+    // Hide the splash screen once fonts are loaded or if there's an error
     if (loaded || error) {
       SplashScreen.hideAsync();
     }
   }, [loaded, error]);
 
+  useEffect(() => {
+    // Register for push notifications
+    registerForPushNotificationsAsync();
+
+    // Set up listeners for notifications
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        // Handle notification received
+        console.warn("Notification received:", notification);
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((notification) => {
+        // Handle notification response
+        console.warn("Notification response received:", notification);
+      });
+
+    // Schedule a notification to be sent 10 seconds after the app starts
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Reminder",
+        body: "Please do not forget to contact customers",
+      },
+      trigger: { seconds: 10 },
+    });
+
+    // Clean up notification listeners when the component unmounts
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []); // Empty dependency array ensures this effect runs only once
+
+  // Return null if fonts are not loaded and there's no error
   if (!loaded && !error) {
     return null;
   }
