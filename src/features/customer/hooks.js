@@ -5,10 +5,12 @@ import { PENDING } from "../../utilities/helpers";
 import Toast from "react-native-toast-message";
 import { useFonts } from "expo-font";
 
+//SECTION - Toast
 export const useShowToast = (type = "success", text1 = "", text2 = "") => {
   Toast.show({ type, text1, text2 });
 };
 
+//SECTION - Form
 export const useUpdateFormFields = (customerID = null) => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.customer.edit.status);
@@ -28,6 +30,7 @@ export const useUpdateFormFields = (customerID = null) => {
   };
 };
 
+//SECTION - Create
 export const useNewCustomer = () => {
   const dispatch = useDispatch();
   return {
@@ -37,6 +40,11 @@ export const useNewCustomer = () => {
   };
 };
 
+export const useCreateCustomerStatus = () => {
+  return useSelector((state) => state.customer.create.status);
+};
+
+//SECTION - Edit
 export const useEditCustomer = (customerID) => {
   const dispatch = useDispatch();
   return {
@@ -46,14 +54,11 @@ export const useEditCustomer = (customerID) => {
   };
 };
 
-export const useCreateCustomerStatus = () => {
-  return useSelector((state) => state.customer.create.status);
-};
-
 export const useEditCustomerStatus = () => {
   return useSelector((state) => state.customer.edit.status);
 };
 
+//SECTION - List
 export const useListCustomers = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -62,6 +67,7 @@ export const useListCustomers = () => {
   return useSelector((state) => state.customer.list.customers);
 };
 
+//SECTION - Delete
 export const useDeleteCustomer = (customerID) => {
   const dispatch = useDispatch();
   console.warn("the id", customerID);
@@ -72,6 +78,17 @@ export const useDeleteCustomer = (customerID) => {
   };
 };
 
+//SECTION - Clear storage
+export const useClearCustomers = () => {
+  const dispatch = useDispatch();
+  return {
+    onSubmit: () => {
+      dispatch(actions.clearCustomers());
+    },
+  };
+};
+
+//SECTION - Font
 export const useCustomFonts = () => {
   const [loaded, error] = useFonts({
     "PTSerif-Bold": require("../../../assets/fonts/PTSerif-Bold.ttf"),

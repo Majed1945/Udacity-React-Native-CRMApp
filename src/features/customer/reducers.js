@@ -1,11 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  PENDING,
-  INPROGRESS,
-  REQUESTING,
-  SUCCESS,
-  ERROR,
-} from "../../utilities/helpers";
+import { PENDING, REQUESTING, SUCCESS, ERROR } from "../../utilities/helpers";
 
 const name = "customer";
 
@@ -103,6 +97,10 @@ const reducers = {
   loadResult: (state, { payload }) => {
     state.list.customers = payload;
   },
+  clearCustomers: (state) => {},
+  clearResult: (state, { payload }) => {
+    state.list.customers = initialState.list.customers;
+  },
 };
 
 const slice = createSlice({
@@ -126,6 +124,8 @@ export const {
   deleteCustomerError,
   loadCustomers,
   loadResult,
+  clearCustomers,
+  clearResult,
 } = slice.actions;
 
 export default slice.reducer;

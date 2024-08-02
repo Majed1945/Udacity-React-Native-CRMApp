@@ -1,17 +1,15 @@
-import { View, Text, Image, Button } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
 import CustomButton from "../../components/Button/Index";
-import splashImage from "../../../assets/images/splashImage.png";
-import Icon from "react-native-vector-icons/Ionicons";
 import welcomeStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { clear } from "../../utilities/asyncStorage";
 import LottieView from "lottie-react-native";
+import { useClearCustomers } from "../../features/customer/hooks";
 
 const Welcome = () => {
   const styles = welcomeStyles();
   const { navigate } = useNavigation();
-
+  const { onSubmit } = useClearCustomers();
   return (
     <View style={styles.container}>
       <View style={styles.lottieContainer}>
@@ -36,48 +34,11 @@ const Welcome = () => {
             isFilled={true}
             onPress={() => navigate("Regions List")}
           />
-          <CustomButton
-            text={"Clear"}
-            isFilled={false}
-            onPress={() => clear()}
-          />
+          <CustomButton text={"Clear"} isFilled={false} onPress={onSubmit} />
         </View>
       </View>
     </View>
   );
 };
 
-{
-  /* <View style={styles.container}>
-<View style={{ flex: 1 }}>
-  <Image
-    source={splashImage}
-    alt="splash image"
-    style={{ width: "100%", objectFit: "fill" }}
-  />
-</View>
-<View style={styles.bottomSection}>
-  <View style={styles.bottomSectionCircle}>
-    <Icon name="person" size={50} color={"#2D0C57"} />
-  </View>
-  <Text style={styles.bottomSectionTitle}>Welcome Admin!</Text>
-  <Text style={styles.bottomSectionText}>
-    Please select start to start the experience, or clear to clear the
-    device storage.
-  </Text>
-  <View style={styles.bottomSectionButtonsBox}>
-    <CustomButton
-      text={"START"}
-      isFilled={true}
-      onPress={() => navigate("Regions List")}
-    />
-    <CustomButton
-      text={"CLEAR"}
-      isFilled={false}
-      onPress={() => clear()}
-    />
-  </View>
-</View>
-</View> */
-}
 export default Welcome;
