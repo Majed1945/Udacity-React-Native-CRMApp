@@ -5,32 +5,28 @@ const welcomeStyles = () => {
   return {
     container: {
       flex: 1,
-      backgroundColor: theme.primary.main,
-    },
-    bottomSection: {
-      flex: 2,
-      borderWidth: 1,
-      borderTopRightRadius: 30,
-      borderTopLeftRadius: 30,
-      alignItems: "center",
-      padding: 20,
-      paddingTop: 60,
-      gap: 20,
-    },
-    bottomSectionCircle: {
-      backgroundColor: "white",
-      width: 100,
-      height: 100,
-      borderRadius: 50,
+      backgroundColor: theme.primary.p300,
       justifyContent: "center",
-      alignItems: "center",
     },
-    bottomSectionTitle: {
-      fontFamily: "Roboto-Medium",
-      fontSize: 37,
+    lottieContainer: {
+      flex: 3,
+    },
+    bottomContainer: {
+      flex: 2,
+      alignItems: "center",
+      paddingHorizontal: 15,
+      justifyContent: "space-between",
+    },
+    textContainer: {
+      alignItems: "center",
+      gap: 10,
+    },
+    welcomeText: {
+      fontFamily: "Roboto-Italic",
+      fontSize: 35,
       color: theme.secondary.main,
     },
-    bottomSectionText: {
+    descriptionText: {
       fontFamily: "Roboto-Regular",
       fontSize: 17,
       color: theme.secondary.main,
@@ -41,6 +37,10 @@ const welcomeStyles = () => {
       gap: 10,
       position: "absolute",
       bottom: "10%",
+    },
+    buttonsContainer: {
+      width: "100%",
+      paddingBottom: 20,
     },
   };
 };

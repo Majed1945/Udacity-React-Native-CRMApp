@@ -8,7 +8,7 @@ const buttonStyles = (isFilled = false, disabled = false) => {
         ? disabled
           ? theme.primary.p400
           : theme.primary.main
-        : "white",
+        : theme.primary.p300,
       borderRadius: 8,
       width: "100%",
       justifyContent: "center",
@@ -18,10 +18,10 @@ const buttonStyles = (isFilled = false, disabled = false) => {
     buttonText: {
       fontFamily: "Roboto-Medium",
       fontSize: 16,
-      color: isFilled ? "white" : theme.gray.g500,
+      color: isFilled ? "white" : theme.secondary.main,
     },
     buttonContainerDisabled: {
-      backgroundColor: isFilled ? theme.primary.p400 : "white",
+      backgroundColor: isFilled ? theme.primary.p400 : theme.primary.p300,
     },
   };
 };
